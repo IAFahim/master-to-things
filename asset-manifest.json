@@ -1,13 +1,12 @@
 {
   "files": {
-    "main.css": "/master-to-things/static/css/main.073c9b0a.css",
+    "main.css": "/master-to-things/static/css/main.31d6cfe0.css",
     "main.js": "/master-to-things/static/js/main.e469c96b.js",
     "index.html": "/master-to-things/index.html",
-    "main.073c9b0a.css.map": "/master-to-things/static/css/main.073c9b0a.css.map",
     "main.e469c96b.js.map": "/master-to-things/static/js/main.e469c96b.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
+    "static/css/main.31d6cfe0.css",
     "static/js/main.e469c96b.js"
   ]
 }
