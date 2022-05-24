@@ -1,0 +1,41 @@
+main {
+    color: azure;
+}
+
+.nav--main {
+    padding-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div--main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 305px;
+}
+
+
+img {
+    border-radius: 3% 3% 1% 1%;
+}
+
+main {
+    font-size: 2em;
+    padding-top: .25em;
+    padding-bottom: .125em;
+}
+
+small {
+    color: #F3BF99;
+    font-size: 1rem;
+}
+
+address {
+    margin: .25rem;
+    font-style: normal;
+    font-weight: 400;
+    font-size: .875rem;
+    color: #F5F5F5;
+}

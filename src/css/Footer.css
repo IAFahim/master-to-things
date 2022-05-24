@@ -1,0 +1,14 @@
+footer {
+    padding-top: .875rem;
+}
+
+a > img {
+    margin: 10px;
+    width: 40px;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
