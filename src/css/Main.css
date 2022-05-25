@@ -24,11 +24,11 @@ img {
 main {
     font-size: 2em;
     padding-top: .25em;
-    padding-bottom: .125em;
+    padding-bottom: .025em;
 }
 
 small {
-    color: #F3BF99;
+    color: #963e00;
     font-size: 1rem;
 }
 
@@ -37,5 +37,5 @@ address {
     font-style: normal;
     font-weight: 400;
     font-size: .875rem;
-    color: #F5F5F5;
+    color: #8a8a8a;
 }
