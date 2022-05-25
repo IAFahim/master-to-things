@@ -1,0 +1,10 @@
+.nav--top{
+    height: 70px;
+    display: flex;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.1);
+    padding: 20px 30px;
+}
+
+.nav--top--img{
+    padding-right: 16px;
+}

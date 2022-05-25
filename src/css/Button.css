@@ -21,10 +21,14 @@ button {
 }
 
 
-button:nth-child(1) {
+.button--email {
     color: #000000;
 }
 
-button:nth-child(2) {
+.button--linkedIn {
     background-color: #5093E2;
+}
+
+.button--linkedIn:hover {
+    background-color: #6291d9;
 }

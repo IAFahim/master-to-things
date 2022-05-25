@@ -1,9 +1,9 @@
 *{
     margin: 0;
+    box-sizing: border-box;
 }
 
 
 body{
     font-family: Inter, monospace, serif;
-    background-color: #23252C;
 }
