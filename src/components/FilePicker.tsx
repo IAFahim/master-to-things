@@ -1,15 +1,44 @@
-import React from "react";
+import React, {useState} from "react";
+import "../css/FilePicker.scss";
 
 const FilePicker = () => {
-    const handleFile = (event: any) => {
+    const [text, setText] = useState("");
+    const [, setIsHovering] = useState(false);
+
+    const filePrint = (file: any) => {
         let reader = new FileReader();
-        reader.onload = (event) => {
-            console.log(event.target!.result);
+        reader.onload = (ev: ProgressEvent<FileReader>) => {
+            setText(String(ev.target!.result));
         }
-        reader.readAsText(event.target.files[0]);
+        reader.readAsText(file);
     }
+
+    const DragStartHandler = (event: React.DragEvent<HTMLDivElement>) => {
+        event.dataTransfer.setData('text', event.currentTarget.id);
+    }
+
+    const enableDropping = (ev: React.DragEvent<HTMLDivElement>) => {
+        ev.preventDefault();
+    }
+
+    const inputViaButtonClickHandler = (ev: any) => {
+        filePrint(ev.target.files[0]);
+    }
+
+    const dropHandler = (ev: React.DragEvent<HTMLDivElement>) => {
+        filePrint(ev.dataTransfer.files[0]);
+        setIsHovering(false)
+    }
+
     return (
-        <input className={"filePicker"} type={"file"} onChange={handleFile}/>
+        <div className="filePicker">
+            <input className={"filePicker"} type={"file"}
+                   onDragStart={DragStartHandler}
+                   onDragOver={enableDropping}
+                   onChange={inputViaButtonClickHandler}
+                   onDrop={dropHandler}/>
+            <p>{text}</p>
+        </div>
     );
 }
 

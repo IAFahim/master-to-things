@@ -1,0 +1,17 @@
+.filePicker{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem .875rem .875rem 1rem;
+
+    input{
+        background-color: white;
+        outline: 2px dashed black;
+        outline-offset: -10px;
+        display: inline;
+    }
+
+    p{
+        margin: 10px;
+    }
+}
