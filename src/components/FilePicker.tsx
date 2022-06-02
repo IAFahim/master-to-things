@@ -1,6 +1,24 @@
 import React, {useState} from "react";
 import "../css/FilePicker.scss";
 
+const hotHeyParse=(str: string)=>{
+    let l = 0;
+    let text= new Map();
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === '\n') {
+            let x = str.substring(l + 3, i);
+            let end = x.indexOf("::");
+            if (end>0) {
+                let key = x.substring(0, end);
+                let val = x.substring(end + 2);
+                text.set(key,val);
+            }
+            l = i;
+        }
+    }
+    return text;
+}
+
 const FilePicker = () => {
     const [text, setText] = useState("");
     const [, setIsHovering] = useState(false);
@@ -8,7 +26,9 @@ const FilePicker = () => {
     const filePrint = (file: any) => {
         let reader = new FileReader();
         reader.onload = (ev: ProgressEvent<FileReader>) => {
-            setText(String(ev.target!.result));
+            let str = String(ev.target!.result)
+            setText(str);
+
         }
         reader.readAsText(file);
     }
@@ -29,7 +49,6 @@ const FilePicker = () => {
         filePrint(ev.dataTransfer.files[0]);
         setIsHovering(false)
     }
-
     return (
         <div className="filePicker">
             <input className={"filePicker"} type={"file"}
