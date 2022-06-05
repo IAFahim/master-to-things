@@ -12,7 +12,7 @@ const hotHeyParse = (str: string) => {
             if (end > 0) {
                 let key = x.substring(0, end);
                 let val = x.substring(end + 2);
-                text.push(key+" "+val)
+                text.push(key + " " + val)
             }
             l = i;
         }
@@ -28,8 +28,8 @@ const FilePicker = () => {
         let reader = new FileReader();
         reader.onload = (ev: ProgressEvent<FileReader>) => {
             let str = String(ev.target!.result)
-            setText(ev=>{
-                return [...ev,...hotHeyParse(str)]
+            setText(ev => {
+                return [...ev, ...hotHeyParse(str)]
             });
         }
         reader.readAsText(file);
@@ -53,7 +53,11 @@ const FilePicker = () => {
     }
 
     // eslint-disable-next-line array-callback-return
-    const thingsElements = text.map(thing => <p key={thing}>{thing}</p>)
+    const thingsElements = text.map(thing =>
+        <tr key={thing}>
+            <th>{thing}</th>
+        </tr>
+    )
 
     return (
         <div className="filePicker">
@@ -62,7 +66,9 @@ const FilePicker = () => {
                    onDragOver={enableDropping}
                    onChange={inputViaButtonClickHandler}
                    onDrop={dropHandler}/>
-            {thingsElements}
+            <table>
+                {thingsElements}
+            </table>
         </div>
     );
 }
