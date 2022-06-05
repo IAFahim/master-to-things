@@ -1,17 +1,18 @@
 import React, {useState} from "react";
 import "../css/FilePicker.scss";
 
-const hotHeyParse=(str: string)=>{
+
+const hotHeyParse = (str: string) => {
     let l = 0;
-    let text= new Map();
+    let text = [];
     for (let i = 0; i < str.length; i++) {
         if (str[i] === '\n') {
             let x = str.substring(l + 3, i);
             let end = x.indexOf("::");
-            if (end>0) {
+            if (end > 0) {
                 let key = x.substring(0, end);
                 let val = x.substring(end + 2);
-                text.set(key,val);
+                text.push(key+" "+val)
             }
             l = i;
         }
@@ -20,15 +21,16 @@ const hotHeyParse=(str: string)=>{
 }
 
 const FilePicker = () => {
-    const [text, setText] = useState("");
+    const [text, setText] = useState([""]);
     const [, setIsHovering] = useState(false);
 
     const filePrint = (file: any) => {
         let reader = new FileReader();
         reader.onload = (ev: ProgressEvent<FileReader>) => {
             let str = String(ev.target!.result)
-            setText(str);
-
+            setText(ev=>{
+                return [...ev,...hotHeyParse(str)]
+            });
         }
         reader.readAsText(file);
     }
@@ -49,6 +51,10 @@ const FilePicker = () => {
         filePrint(ev.dataTransfer.files[0]);
         setIsHovering(false)
     }
+
+    // eslint-disable-next-line array-callback-return
+    const thingsElements = text.map(thing => <p key={thing}>{thing}</p>)
+
     return (
         <div className="filePicker">
             <input className={"filePicker"} type={"file"}
@@ -56,7 +62,7 @@ const FilePicker = () => {
                    onDragOver={enableDropping}
                    onChange={inputViaButtonClickHandler}
                    onDrop={dropHandler}/>
-            <p>{text}</p>
+            {thingsElements}
         </div>
     );
 }
